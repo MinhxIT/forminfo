@@ -1,7 +1,6 @@
 import Redirect from 'react-router-dom/Redirect';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import PlayerAPI from '../api';
 class FormInfo extends Component {
     constructor(props){
         super(props);
@@ -13,7 +12,6 @@ class FormInfo extends Component {
         }
     }
     submitForm = (event)=>{
-        
         event.preventDefault();
         this.setState({
             isRedirect:true
@@ -26,17 +24,13 @@ class FormInfo extends Component {
             [name]:value
         });
     }
+    getData= (fName,fAddress,fPhone)=>{
+
+    }
     render() {
-        if(this.state.isRedirect == true){
-            var newPlayer = {
-            number:PlayerAPI.players.length,
-            name: this.state.fName,
-            address: this.state.fAddress,
-            phone: this.state.fPhone
-        }
-        PlayerAPI.players.push(newPlayer);
-        console.log(PlayerAPI.players);
-            return <Redirect to={"/display/"+this.state.fName}/>
+        if(this.state.isRedirect === true){
+            console.log(this.state);
+            return <Redirect to={"/display"}/> 
         }
         return (
             <div>
