@@ -28,6 +28,14 @@ class FormInfo extends Component {
     }
     render() {
         if(this.state.isRedirect == true){
+            var newPlayer = {
+            number:PlayerAPI.players.length,
+            name: this.state.fName,
+            address: this.state.fAddress,
+            phone: this.state.fPhone
+        }
+        PlayerAPI.players.push(newPlayer);
+        console.log(PlayerAPI.players);
             return <Redirect to={"/display/"+this.state.fName}/>
         }
         return (
