@@ -8,6 +8,7 @@ class FormDisplay extends Component {
     const { fName, fAddress, fPhone } = this.props.data;
     return (
       <div>
+        <div className="container">
         <table class="table">
           <thead>
             <tr>
@@ -26,6 +27,7 @@ class FormDisplay extends Component {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
 
     );

@@ -1,4 +1,3 @@
-import Redirect from 'react-router-dom/Redirect';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 class FormInfo extends Component {
