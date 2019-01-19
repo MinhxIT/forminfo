@@ -1,6 +1,6 @@
 import Redirect from 'react-router-dom/Redirect';
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 class FormInfo extends Component {
     constructor(props){
         super(props);
@@ -13,9 +13,10 @@ class FormInfo extends Component {
     }
     submitForm = (event)=>{
         event.preventDefault();
-        this.setState({
-            isRedirect:true
-        });
+        const { updateData, history } = this.props;
+        const { fName, fAddress, fPhone } = this.state;
+        updateData({ fName, fAddress, fPhone });
+        history.push("/display");
     }
     isChange = (event)=>{
         const name = event.target.name;
@@ -24,14 +25,9 @@ class FormInfo extends Component {
             [name]:value
         });
     }
-    getData= (fName,fAddress,fPhone)=>{
-
-    }
+    
     render() {
-        if(this.state.isRedirect === true){
-            console.log(this.state);
-            return <Redirect to={"/display"}/> 
-        }
+        
         return (
             <div>
                 <div className="container">  
@@ -56,4 +52,4 @@ class FormInfo extends Component {
         );
     }
 }
-export default FormInfo;
+export default withRouter(FormInfo);
